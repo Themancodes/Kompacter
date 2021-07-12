@@ -24,6 +24,7 @@ class LinksController < ApplicationController
     # redirect_to @link.url
   end
   
+  
   # GET /links/1 or /links/1.json
   def show
   end

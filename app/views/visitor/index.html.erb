@@ -1,0 +1,39 @@
+
+<h1 class="display-4 mt-4 pb-4">Who visited what?</h1>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Url</th>
+      <th scope="col">Name</th>
+      <th scope="col">Shortened url</th>
+      <th colspan="1"></th>
+      <th scope="col">Tally</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @visitors.each do |visitor| %>
+      <tr>
+        <td><%= visitor.title %></td>
+        <td><%= visitor.url %></td>
+        <td><a href="<%= visitor.short %>" target="_blank"><%= visitor.short %></a></td>
+        <td><span class="fas fa-clipboard"></span></td>
+        <td><%= link_to 'Edit', edit_link_path(visitor), class: 'btn' %></td>
+        <td><%= visitor.counter %></td>
+        <%
+=begin%>
+ <td><%= link_to 'redirect_to_link', visitor, class: 'btn' %></td> 
+<%
+=end%>
+        <td><%= link_to 'Destroy', visitor, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+  <%= link_to 'New Link', new_link_path, class: 'btn btn-primary' %>
+

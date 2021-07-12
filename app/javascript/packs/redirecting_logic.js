@@ -18,36 +18,43 @@
 // ipAddress: "189.152.136.125"
 // stateProv: "Nuevo León"
 
-let temp1 = {}
+let visitorLocation
+let visitorIp
+let visitorUserAgent = navigator.userAgent
+let visitorPlatform = navigator.platform
 
 async function getUserIpAdress() {
   const response = await fetch('https://api.db-ip.com/v2/free/self', {});
-  const json = await response.json();
-  console.log(json, "Inside")
-  temp1 = {...json}
-  
+  return await response.json();
 }
 
-getUserIpAdress()
+getUserIpAdress().then(json => {
+  visitorLocation = `${json.city}, ${json.stateProv}, ${json.countryName}`
+  visitorIp = `${json.ipAddress}`
+  console.log("IP", visitorIp," Location",  visitorLocation,"Agent", visitorUserAgent,"Platform", visitorPlatform)
+  addVisitor({visitorLocation: visitorLocation,
+              visitorIp: visitorIp,
+              visitorUserAgent: visitorUserAgent,
+              visitorPlatform: visitorPlatform
+              })
+  }
+)
 
-
-
-console.log(temp1, "temp1")
-
-
-// const userAgent = navigator.userAgent
-// console.log(userAgent, "userAgent")
-
-
-
-// fetch("http://localhost:3000/users", {
-//    method: 'POST',
-//    headers: {
-//       'Content-Type': 'application/json',
-//    },
-//    body: JSON.stringify({
-//       first_name: userFirstName,
-//       last_name: userLastName,
-//       age: userAge
-//    })
-// })
+const addVisitor = ({
+  visitorLocation,
+  visitorIp,
+  visitorUserAgent,
+  visitorPlatform
+  }) => { fetch("http://localhost:3000/users", {
+    method: 'POST',
+    headers: {
+       'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+       ip: visitorIp,
+       location: visitorLocation,
+       platform: visitorPlatform,
+       userAgent: visitorUserAgent
+    })
+ })
+}

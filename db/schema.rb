@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_10_223659) do
+ActiveRecord::Schema.define(version: 2021_04_22_203424) do
 
   create_table "links", force: :cascade do |t|
     t.text "title"
@@ -42,9 +42,12 @@ ActiveRecord::Schema.define(version: 2021_03_10_223659) do
   end
 
   create_table "visitors", force: :cascade do |t|
-    t.string "remote_ip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "location"
+    t.string "ip"
+    t.string "user_agent"
+    t.string "platform"
   end
 
   create_table "visits", force: :cascade do |t|
