@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
-  before_action :set_link, only: %i[ show edit update destroy ]
+  before_action :set_link, only: %i[ show edit update destroy ] 
+
 
   # GET /links or /links.json
   def index
@@ -8,6 +9,10 @@ class LinksController < ApplicationController
 
   # GET /links/1 or /links/1.json
   def show
+    #@link = Link.find_by_ending(params[:ending]) 
+    #render 'errors/404', status: 404 if @link.nil?
+    redirect_to @link.url
+    @link.update_attribute(:counter, @link.counter + 1)
   end
 
   # GET /links/new
@@ -64,6 +69,6 @@ class LinksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def link_params
-      params.require(:link).permit(:title, :description, :url)
+      params.require(:link).permit(:title, :ending, :url)
     end
 end

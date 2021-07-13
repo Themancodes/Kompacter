@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2021_02_12_064254) do
 
   create_table "links", force: :cascade do |t|
     t.text "title"
-    t.text "description"
+    t.text "ending"
     t.text "url", null: false
     t.integer "counter", default: 0
     t.datetime "created_at", precision: 6, null: false
