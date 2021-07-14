@@ -1,0 +1,2 @@
+# Integrating the current_user method in Rails
+Add a shared _navigation Partial: https://www.youtube.com/watch?v=1neD0F_-LsI&list=PLgYiyoyNPrv81SdYk-eoMFacl-CJTO_xa&index=67

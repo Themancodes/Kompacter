@@ -16,15 +16,23 @@
     <%= form.text_field :title, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <%
+=begin%>
+ <div class="field">
     <%= form.label :ending %>
     <%= form.text_field :ending, class: 'form-control' %>
-  </div>
+  </div> 
+<%
+=end%>
+
 
   <div class="field">
     <%= form.label :url %>
     <%= form.text_field :url, class: 'form-control' %>
   </div>
+
+  <%= form.text_field :users_id, id: :index_links_on_users_id, class: 'form-control', value: current_user.id %>
+
 
   <div class="actions">
     <%= form.submit class: 'btn btn-primary' %>

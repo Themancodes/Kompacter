@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
-  before_action :set_link, only: %i[ show edit update destroy ] 
+  before_action :set_link, only: %i[  edit update destroy ] 
+
 
 
   # GET /links or /links.json
@@ -9,15 +10,15 @@ class LinksController < ApplicationController
 
   # GET /links/1 or /links/1.json
   def show
-    #@link = Link.find_by_ending(params[:ending]) 
-    #render 'errors/404', status: 404 if @link.nil?
-    redirect_to @link.url
+    @link = Link.find_by_ending(params[:ending]) 
+    render 'errors/404', status: 404 if @link.nil?
     @link.update_attribute(:counter, @link.counter + 1)
+    redirect_to @link.url
   end
 
   # GET /links/new
   def new
-    @link = Link.new
+    @link = current_user.links.build
   end
 
   # GET /links/1/edit
@@ -26,7 +27,7 @@ class LinksController < ApplicationController
 
   # POST /links or /links.json
   def create
-    @link = Link.new(link_params)
+    @link = current_user.links.build(link_params)
 
     respond_to do |format|
       if @link.save
@@ -67,8 +68,14 @@ class LinksController < ApplicationController
       @link = Link.find(params[:id])
     end
 
+    def set_user
+      @user = current_user
+    end
+
     # Only allow a list of trusted parameters through.
     def link_params
-      params.require(:link).permit(:title, :ending, :url)
+      params.require(:link).permit(:title, :url, :user_id)
     end
+
+
 end

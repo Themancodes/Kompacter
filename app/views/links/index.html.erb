@@ -14,9 +14,9 @@
   <tbody>
     <% @links.each do |link| %>
       <tr>
-        <td><%= link.title %></td>
-        <td><%= link.ending %></td>
         <td><%= link.url %></td>
+        <td><%= link.title %></td>
+        <td><a href="<%= link.short %>" target="_blank"><%= link.short %></a></td>
         <td><%= link.counter %></td>
 
         <td><%= link_to 'Show', link, class: 'btn' %></td>

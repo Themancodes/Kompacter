@@ -10,8 +10,11 @@ class User < ApplicationRecord
 
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :trackable
+  
+  has_many :links, dependent: :destroy
+
+
 
   
+
 end
