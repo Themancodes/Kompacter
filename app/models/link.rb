@@ -14,7 +14,7 @@ class Link < ApplicationRecord
    end
   
    def short
-     Rails.application.routes.url_helpers.short_url(ending: self.ending)
+     Rails.application.routes.url_helpers.redirex_url(ending: self.ending)
    end
   
    def self.shorten(url, ending = '')

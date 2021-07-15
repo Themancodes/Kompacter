@@ -1,19 +1,23 @@
 class LinksController < ApplicationController
-  before_action :set_link, only: %i[  edit update destroy ] 
+  before_action :set_link, only: %i[ show edit update destroy ] 
 
 
 
   # GET /links or /links.json
   def index
-    @links = Link.all
+    @links = current_user.links.all
   end
 
   # GET /links/1 or /links/1.json
-  def show
+  def redirect_to_link
     @link = Link.find_by_ending(params[:ending]) 
     render 'errors/404', status: 404 if @link.nil?
     @link.update_attribute(:counter, @link.counter + 1)
     redirect_to @link.url
+  end
+  
+  # GET /links/1 or /links/1.json
+  def show
   end
 
   # GET /links/new
@@ -65,7 +69,7 @@ class LinksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_link
-      @link = Link.find(params[:id])
+      @link = current_user.links.find(params[:id])
     end
 
     def set_user
