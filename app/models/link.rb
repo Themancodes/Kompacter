@@ -3,7 +3,7 @@ class Link < ApplicationRecord
   has_many :visits
   has_many :visitors, through: :visits
 
-  before_validation :generate_ending
+  before_save :generate_ending
   validates :url, presence: true    
   validates :url, format: URI::regexp(%w[http https])
   validates_length_of :url, within: 3..511, on: :create, message: "too long"

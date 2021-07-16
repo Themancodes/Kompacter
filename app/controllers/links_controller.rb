@@ -8,12 +8,20 @@ class LinksController < ApplicationController
     @links = current_user.links.all
   end
 
+  def redirecting_screen
+   @link = Link.find_by_ending(params[:ending]) 
+   render 'errors/404', status: 404 if @link.nil?
+   @link.update_attribute(:counter, @link.counter + 1)
+   # redirect_to @link.url
+  end
+
   # GET /links/1 or /links/1.json
   def redirect_to_link
     @link = Link.find_by_ending(params[:ending]) 
     render 'errors/404', status: 404 if @link.nil?
     @link.update_attribute(:counter, @link.counter + 1)
-    redirect_to @link.url
+    render @link
+    # redirect_to @link.url
   end
   
   # GET /links/1 or /links/1.json
