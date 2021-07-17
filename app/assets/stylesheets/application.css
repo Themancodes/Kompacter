@@ -14,7 +14,15 @@
  *= require_self
  */
 
-footer { margin-top: 100px; }
-table, td, th { vertical-align: middle; border: none; }
-th { border-bottom: 1px solid #DDD; }
-body { margin: 0; }
+/* footer {
+  position: sticky;
+  display: flex;
+  border: none;
+}
+
+th {
+  border-bottom: 1px solid #DDD;
+}
+
+body {
+} */

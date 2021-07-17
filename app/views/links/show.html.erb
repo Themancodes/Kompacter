@@ -1,19 +1,10 @@
 
-<li>
-  <strong>Title:</strong>
-  <%= @link.title %>
-</li>
+<div>
+  <h1>Congratulations! your short link is:</h1>
+  <br>
+  <a href="<%== @link.short %>" target="_blank"><%= @link.short %></a>
+</div>
 
-<li>
-  <strong>ending:</strong>
-  <%= @link.ending %>
-</li>
 
-<li>
-  <strong>Url:</strong>
-  <%= @link.url %>
-</li>
-
-<%= link_to 'Edit', edit_link_path(@link), class: 'btn'  %> |
+<%= link_to 'Edit', edit_link_path(@link), class: 'btn'  %> 
 <%= link_to 'Back', links_path,  class: 'btn'  %>
-  
