@@ -1,4 +1,4 @@
-# Kompacter
+# Kompakter
 
 ### A URL shortener app made with love and Rails (WIP)
 
