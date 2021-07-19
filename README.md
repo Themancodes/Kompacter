@@ -12,8 +12,12 @@ You may run it locally or deploy it.
 To Run it
 
 1 Clone the project
+
 1 I recommend you use [rvm](https://rvm.io/) and install ruby 2.7.2 `rvm install 2.7.2`
+
 1 cd into project then `bundle install`
+
 1 then simply `rails s`
+
 1 go check your port 3000 on localhost and watch the magic begin
 
