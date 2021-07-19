@@ -1,6 +1,6 @@
-# Kompacter W.I.P.
+# Kompacter
 
-A URL shortener app made with love and Rails 
+### A URL shortener app made with love and Rails (WIP)
 
 Who knew you can create shorter links and get data from the people who clicks on them!
 Yeap! that is what kompacter does
